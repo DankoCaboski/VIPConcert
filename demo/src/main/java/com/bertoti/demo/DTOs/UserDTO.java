@@ -25,6 +25,6 @@ public record UserDTO(Integer id, String email, String name, String cpf, String 
     }
 
     public User toUser(){
-        return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(role()));
+        return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())));
     }
 }
