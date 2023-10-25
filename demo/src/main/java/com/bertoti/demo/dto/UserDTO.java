@@ -1,4 +1,4 @@
-package com.bertoti.demo.DTOs;
+package com.bertoti.demo.dto;
 
 import com.bertoti.demo.enums.RolesEnum;
 import com.bertoti.demo.models.User;

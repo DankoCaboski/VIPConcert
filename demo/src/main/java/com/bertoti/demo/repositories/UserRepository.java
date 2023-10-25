@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.bertoti.demo.DTOs.UserDTO;
+import com.bertoti.demo.dto.UserDTO;
 import com.bertoti.demo.models.User;
 
 @Repository

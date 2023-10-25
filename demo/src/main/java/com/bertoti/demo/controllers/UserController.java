@@ -1,6 +1,6 @@
 package com.bertoti.demo.controllers;
 
-import com.bertoti.demo.DTOs.UserDTO;
+import com.bertoti.demo.dto.UserDTO;
 import com.bertoti.demo.models.User;
 import com.bertoti.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
