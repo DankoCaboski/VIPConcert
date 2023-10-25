@@ -5,9 +5,14 @@ import com.bertoti.demo.models.User;
 
 public record UserDTO(Integer id, String email, String name, String cpf, String role){
     public UserDTO(User user){
-        this(user.getId(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole()));
-        if(role() == RolesEnum.UNDEFINED.name()){
-            throw new IllegalArgumentException("User created as UNDEFINED\n Invalid role: " + user.getRole());
+        this(user.getId(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()));
+    }
+
+    public RolesEnum getRole(){
+        try {
+            return RolesEnum.valueOf(role());
+        } catch (Exception e) {
+            return RolesEnum.UNDEFINED;
         }
     }
 
@@ -20,6 +25,6 @@ public record UserDTO(Integer id, String email, String name, String cpf, String 
     }
 
     public User toUser(){
-        return new User(id(), email(), name(), cpf(), role());
+        return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(role()));
     }
 }

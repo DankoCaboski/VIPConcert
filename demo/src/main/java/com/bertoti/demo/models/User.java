@@ -14,19 +14,10 @@ public class User {
     private String email;
     private String name;
     private String cpf;
-    private String role;
+    private RolesEnum role;
 
-    public User fixRole() {
-        try {
-            this.role = RolesEnum.valueOf(role).name();
-            return this;
-        } catch (IllegalArgumentException e) {
-            this.role = RolesEnum.UNDEFINED.name();
-            return this;
-        }
-    }
-
-    public String getRole() {
+    public RolesEnum getRole() {
         return role;
     }
+
 }

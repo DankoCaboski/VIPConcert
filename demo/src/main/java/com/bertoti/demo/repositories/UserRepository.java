@@ -19,7 +19,7 @@ public class UserRepository {
     }
     
     public User save(User user) {
-        users.add(user.fixRole());
+        users.add(user);
         return user;
     }
 

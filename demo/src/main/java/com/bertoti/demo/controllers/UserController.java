@@ -1,5 +1,6 @@
 package com.bertoti.demo.controllers;
 
+import com.bertoti.demo.DTOs.UserDTO;
 import com.bertoti.demo.models.User;
 import com.bertoti.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +40,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user) {
+    public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
         try {
-            if (userRepository.existById(user.getId())) {
+            if (userRepository.existById(userDTO.id())) {
                 return ResponseEntity.status(HttpStatus.CONFLICT).build();
             }
             else{
-                User newUser =  userRepository.save(user);
+                User newUser =  userRepository.save(userDTO);
                 return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
             }
         } catch (HttpMessageNotReadableException e) {
@@ -56,13 +57,17 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User user) {
+    public ResponseEntity<?> updateUser(@PathVariable int id, @RequestBody UserDTO userDTO) {
         User internalUser = userRepository.findById(id);
         if (internalUser != null) {
-            internalUser.setName(user.getName());
-            internalUser.setEmail(user.getEmail());
-            User savedUser = userRepository.save(internalUser);
-            return ResponseEntity.ok(savedUser);
+            try {
+                internalUser.setName(userDTO.name());
+                internalUser.setEmail(userDTO.email());
+                internalUser.setCpf(userDTO.cpf());
+                internalUser.setRole(userDTO.getRole());     
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error while updating user");               }
+            return ResponseEntity.ok(userRepository.save(internalUser));
         } else {
             return ResponseEntity.notFound().build();
         }
