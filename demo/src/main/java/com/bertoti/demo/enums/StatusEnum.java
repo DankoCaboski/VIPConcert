@@ -1,4 +1,4 @@
-package com.bertoti.demo.models;
+package com.bertoti.demo.enums;
 
 public enum StatusEnum {
     ACTIVE,

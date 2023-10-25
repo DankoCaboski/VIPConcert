@@ -1,5 +1,7 @@
 package com.bertoti.demo.models;
 
+import com.bertoti.demo.enums.RolesEnum;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

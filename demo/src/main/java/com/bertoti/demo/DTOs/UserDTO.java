@@ -1,6 +1,6 @@
 package com.bertoti.demo.DTOs;
 
-import com.bertoti.demo.models.RolesEnum;
+import com.bertoti.demo.enums.RolesEnum;
 import com.bertoti.demo.models.User;
 
 public record UserDTO(Integer id, String email, String name, String cpf, String role){
