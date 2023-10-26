@@ -36,7 +36,7 @@ public class UserController {
         if (user != null) {
             return ResponseEntity.ok(user);
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.noContent().build();
         }
     }
 
@@ -65,7 +65,8 @@ public class UserController {
                 internalUser.setName(userDTO.name());
                 internalUser.setEmail(userDTO.email());
                 internalUser.setCpf(userDTO.cpf());
-                internalUser.setRole(userDTO.getRole());     
+                internalUser.setRole(userDTO.getRole());
+                internalUser.setStatus(userDTO.getStatus());   
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error while updating user");               }
             return ResponseEntity.ok(userRepository.save(internalUser));

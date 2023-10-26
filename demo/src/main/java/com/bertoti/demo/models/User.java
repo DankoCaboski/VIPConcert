@@ -1,6 +1,7 @@
 package com.bertoti.demo.models;
 
 import com.bertoti.demo.enums.RolesEnum;
+import com.bertoti.demo.enums.StatusEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,7 @@ public class User {
     private String name;
     private String cpf;
     private RolesEnum role;
+    private StatusEnum status;
 
     public RolesEnum getRole() {
         return role;

@@ -1,11 +1,12 @@
 package com.bertoti.demo.dto;
 
 import com.bertoti.demo.enums.RolesEnum;
+import com.bertoti.demo.enums.StatusEnum;
 import com.bertoti.demo.models.User;
 
-public record UserDTO(Integer id, String email, String name, String cpf, String role){
+public record UserDTO(Integer id, String email, String name, String cpf, String role, String status){
     public UserDTO(User user){
-        this(user.getId(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()));
+        this(user.getId(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()), user.getStatus().name());
     }
 
     public RolesEnum getRole(){
@@ -25,6 +26,15 @@ public record UserDTO(Integer id, String email, String name, String cpf, String 
     }
 
     public User toUser(){
-        return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())));
+        try {
+            StatusEnum.valueOf(status).name();
+            return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())), StatusEnum.valueOf(status()));
+        } catch (Exception e) {
+            return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())), StatusEnum.ACTIVE);
+        }
+    }
+
+    public StatusEnum getStatus() {
+        return StatusEnum.valueOf(status);
     }
 }
