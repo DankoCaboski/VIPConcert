@@ -1,4 +1,4 @@
-package com.bertoti.demo.repositories;
+package com.bertoti.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,17 @@ import org.springframework.stereotype.Repository;
 import com.bertoti.demo.dto.UserDTO;
 import com.bertoti.demo.models.User;
 
+import lombok.Getter;
+
+@Getter
+
 @Repository
 public class UserRepository {
-    private List<User> users = new ArrayList<>();
+    public static List<User> users = new ArrayList<>();
     
     public User save(UserDTO userDTO) {
         User user = userDTO.toUser();
+        user.setId(users.size()+1);
         users.add(user);
         return user;
     }
@@ -50,6 +55,11 @@ public class UserRepository {
 
     public boolean existById(Integer id) {
         return users.stream().anyMatch(user -> user.getId() == id);
+    }
+
+    public boolean existByCpf(String cpf) {
+
+        return users.stream().anyMatch(user -> user.getCpf().equalsIgnoreCase(cpf));
     }
 
 }

@@ -15,8 +15,7 @@ form.addEventListener('submit', (event) => {
         name: name.value,
         email: email.value,
         cpf: cpf.value,
-        role: role.value,
-        id: id.value
+        role: role.value
     }
 
     if (name.value === '' || email.value === '' || cpf.value === '' || role.value === '') {
@@ -24,16 +23,31 @@ form.addEventListener('submit', (event) => {
         
     }
     else{
-        console.log("body", body);
         fazPost(url, JSON.stringify(body));
     }
     
 });
 
-function  fazPost(irl, body) {
+function fazPost(url, body) {
     let request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(body);
+    const status = document.getElementById('StatusBar');
     
+    request.onload = function() {
+
+        console.log(request.response);
+
+        if(request.status != 201){
+            status.innerHTML = 'Erro ao cadastrar usuário';
+            status.style.backgroundColor = 'red';
+        }
+        else{   
+            status.innerHTML = 'Usuário cadastrado com sucesso!'; 
+            status.style.backgroundColor = 'green';
+        }
+        status.style.display = 'block';
+    };
+    request.send(body);
+    return;
 }
