@@ -3,6 +3,8 @@ package com.bertoti.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.bertoti.demo.controllers.UserController;
+
 @SpringBootApplication
 public class RestBertotiApplication {
 

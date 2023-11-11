@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/demo/src/main/frontend/styles/shared/shared.css">
+    <link rel="stylesheet" href="/demo/src/main/frontend/styles/event/EVENT.cadastro.css">
+    <title>Cadastrar evento</title>
+</head>
+<body>
+
+    <form id="user-form">
+        <label for="labelEventName">Evento:</label>
+        <input class="camposInput" type="text" id="eventName" name="eventName" autocomplete="eventName">
+
+        <label for="email">Categoria:</label>
+        <select name="select">
+            <option value="valor1">Valor 1</option>
+            <option value="valor2" selected>Valor 2</option>
+            <option value="valor3">Valor 3</option>
+        </select>
+
+        <label for="labelInicioEvent">Início:</label>
+        <input class="camposInput" id="inputInicioEvent" type="date"/>
+
+        <label for="labelFimEvent">Fim:</label>
+        <input class="camposInput" id="inputFimEvent" type="date"/>
+
+        <input class="camposInput" type="submit" value="Salvar" id="botaoSubmit">
+    </form>
+
+    <script type="text/javascript" src="/demo/src/main/frontend/scripts/event/EVENT.cadastro.js" defer></script>
+</body>
+</html>

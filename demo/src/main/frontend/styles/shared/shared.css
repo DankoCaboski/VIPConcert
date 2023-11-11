@@ -1,0 +1,9 @@
+:root {
+    --bodyBackground-color: aqua;
+    --criadoComSucesso-color: green;
+    --falhaAoCriar-color: red;
+}
+
+body {
+    background-color: var(--bodyBackground-color);
+}

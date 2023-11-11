@@ -2,6 +2,7 @@ package com.bertoti.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -60,6 +61,30 @@ public class UserRepository {
     public boolean existByCpf(String cpf) {
 
         return users.stream().anyMatch(user -> user.getCpf().equalsIgnoreCase(cpf));
+    }
+
+    public void save(Map<String, Object> updates, int id) {
+        User user = findById(id);
+        if (user != null) {
+            for (Map.Entry<String, Object> entry : updates.entrySet()) {
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                switch (key) {
+                    case "name":
+                        user.setName((String) value);
+                        break;
+                    case "email":
+                        user.setEmail((String) value);
+                        break;
+                    case "cpf":
+                        user.setCpf((String) value);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Invalid field: " + key);
+                }
+            }
+            update(user);
+        }
     }
 
 }

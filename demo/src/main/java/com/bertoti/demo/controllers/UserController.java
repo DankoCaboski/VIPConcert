@@ -25,8 +25,8 @@ public class UserController {
     UserService userService = new UserService(userRepository);
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getAllUsers(@PathVariable String id ) {
-        
+    public ResponseEntity<?> getUser(@PathVariable String id ) {
+
         if(id.equals("all")){
             List<UserDTO> users = userService.getAllUsers();
             if (users.isEmpty()) {
@@ -36,6 +36,7 @@ public class UserController {
             }
         }
         else{
+            Integer.parseInt(id);
             UserDTO userDTO = userService.getUserById(id);
             if (userDTO == null) {
                 return ResponseEntity.noContent().build();
@@ -45,15 +46,10 @@ public class UserController {
         }
     }
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<User> getUserById(@PathVariable String id) {
-    //     User user = userRepository.findById(Integer.parseInt(id));
-    //     if (user != null) {
-    //         return ResponseEntity.ok(user);
-    //     } else {
-    //         return ResponseEntity.noContent().build();
-    //     }
-    // }
+    @GetMapping
+    public ResponseEntity<?> getAllUsers() {
+        return getUser("all");
+    }
 
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
@@ -85,6 +81,45 @@ public class UserController {
                 internalUser.setStatus(userDTO.getStatus());   
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error while updating user");               }
+            return ResponseEntity.ok(userRepository.save(internalUser));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PatchMapping("/{id}/update")
+    public ResponseEntity<?> updatedata(@PathVariable int id, @RequestBody UserDTO partialData){
+        User internalUser = userRepository.findById(id);
+        String dados = "campos fornecidos: ";
+        if (internalUser != null) {
+            try {
+                if(partialData.name() != "null"){
+                    internalUser.setName(partialData.name());
+                    dados += "name, ";
+                }
+                if(partialData.email() != "null"){
+                    internalUser.setEmail(partialData.email());
+                    dados += "email, ";
+                }
+                if(partialData.cpf() != "null"){
+                    internalUser.setCpf(partialData.cpf());
+                    dados += "cpf, ";
+                }
+                if(partialData.role() != "null"){
+                    internalUser.setRole(partialData.getRole());
+                    dados += "role, ";
+                    dados += partialData.role() + ", ";
+                }
+                if(partialData.getStatus().name() != "null"){
+                    internalUser.setStatus(partialData.getStatus());
+                    dados += "status, ";
+                }
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()+ "\n" + e.getStackTrace() +
+                "\nErro no formato de algum dado\n" + dados);
+                //TODO: corrigir 
+                //TODO: tratar exceção de formato de dado com ApiExceptionHandler
+           }
             return ResponseEntity.ok(userRepository.save(internalUser));
         } else {
             return ResponseEntity.notFound().build();
