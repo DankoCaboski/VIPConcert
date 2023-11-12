@@ -1,6 +1,6 @@
 :root{
 --red: #FF0000;
---greem: #3af33a;
+--green: #3af33a;
 }
 
 form{
@@ -20,4 +20,8 @@ form{
     border-radius: 5px;
     padding: 0 10px;
     font-size: 16px;
+}
+
+.btn{
+    background-color:aquamarine;
 }
