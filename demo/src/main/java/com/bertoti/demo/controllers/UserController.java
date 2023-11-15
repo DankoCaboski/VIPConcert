@@ -1,6 +1,5 @@
 package com.bertoti.demo.controllers;
 
-import com.bertoti.demo.teste;
 import com.bertoti.demo.dto.UserDTO;
 import com.bertoti.demo.models.User;
 import com.bertoti.demo.repository.UserRepository;

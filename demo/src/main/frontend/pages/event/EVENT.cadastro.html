@@ -10,23 +10,19 @@
 <body>
 
     <form id="user-form">
-        <label for="labelEventName">Evento:</label>
-        <input class="camposInput" type="text" id="eventName" name="eventName" autocomplete="eventName">
+        <label for="eventName">Evento:</label>
+        <input class="camposInput" type="text" id="eventName" name="eventName" autocomplete="name">
 
-        <label for="labelEventDescription">Descrição:</label>
-        <input class="camposInput" type="text" id="eventDescription" name="eventDescription" autocomplete="eventDescription">
+        <label for="eventDescription">Descrição:</label>
+        <input class="camposInput" type="text" id="eventDescription" name="eventDescription" autocomplete="off">
 
-        <label for="email">Categoria:</label>
-        <select name="select">
-            <option value="valor1">Valor 1</option>
-            <option value="valor2" selected>Valor 2</option>
-            <option value="valor3">Valor 3</option>
-        </select>
+        <label for="selectGenero">Categoria:</label>
+        <select name="select" id="selectGenero"></select>
 
-        <label for="labelInicioEvent">Início:</label>
+        <label for="inputInicioEvent">Início:</label>
         <input class="camposInput" id="inputInicioEvent" type="date"/>
 
-        <label for="labelFimEvent">Fim:</label>
+        <label for="inputFimEvent">Fim:</label>
         <input class="camposInput" id="inputFimEvent" type="date"/>
 
         <input class="camposInput btn" type="submit" value="Salvar" id="btSubmit">

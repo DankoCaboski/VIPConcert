@@ -30,3 +30,34 @@ function fazPost(url, body) {
     return;
 }
 
+async function popularGeneros() {
+    const nSeAplica = [{value: "", label: ""}];
+    const selectGenero = document.getElementById('selectGenero');
+
+    nSeAplica.forEach(genero => {
+        const option = document.createElement('option');
+        option.value = genero.value;
+        option.textContent = genero.label;
+        selectGenero.appendChild(option);
+    });
+
+    try {
+        const response = await fetch('http://localhost:8080/event/generos');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        data.forEach(genero => {
+            const option = document.createElement('option');
+            option.value = genero.value;
+            option.textContent = genero.label;
+            selectGenero.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        console.log("data:");
+        console.log(data);
+    }
+}
+
+popularGeneros();

@@ -4,7 +4,15 @@ import com.bertoti.demo.enums.RolesEnum;
 import com.bertoti.demo.enums.StatusEnum;
 import com.bertoti.demo.models.User;
 
-public record UserDTO(Integer id, String email, String name, String cpf, String role, String status){
+public record UserDTO(
+    Integer id,
+    String email,
+    String name, 
+    String cpf,
+    String role,
+    String status
+    ){
+
     public UserDTO(User user){
         this(user.getId(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()), user.getStatus().name());
     }

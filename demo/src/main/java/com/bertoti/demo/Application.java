@@ -3,13 +3,11 @@ package com.bertoti.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.bertoti.demo.controllers.UserController;
-
 @SpringBootApplication
-public class RestBertotiApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestBertotiApplication.class, args);
-		System.out.println("Server runing");
+		SpringApplication.run(Application.class, args);
+		System.out.println("Server is runing");
 	}
 }
