@@ -84,7 +84,7 @@ async function popularGeneros() {
         const data = await response.json();
         data.forEach(genero => {
             const option = document.createElement('option');
-            option.value = genero.value;
+            option.value = genero.genero;
             option.textContent = genero.label;
             selectGenero.appendChild(option);
         });

@@ -38,7 +38,6 @@ public class EventController{
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-
     }
 
     @PostMapping
@@ -69,6 +68,7 @@ public class EventController{
 
     @GetMapping("promoters")
     public ResponseEntity<?> getPromoters(){
+        //TODO: Implementar
         return null;
     }
 }

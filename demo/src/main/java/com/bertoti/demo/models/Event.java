@@ -3,9 +3,6 @@ package com.bertoti.demo.models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bertoti.demo.dto.EventDTO;
 import com.bertoti.demo.enums.Categorias;

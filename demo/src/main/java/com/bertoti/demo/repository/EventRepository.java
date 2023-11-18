@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.bertoti.demo.dto.EventDTO;
-import com.bertoti.demo.exceptions.ApiExceptionHandler;
 import com.bertoti.demo.models.Event;
 
 import lombok.extern.slf4j.Slf4j;
