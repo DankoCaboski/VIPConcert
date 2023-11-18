@@ -17,5 +17,6 @@ public class Participacao {
 
     public Participacao(ParticipacaoDTO participacaoDTO) {
         this.userId = participacaoDTO.userId();
+        this.eventId = participacaoDTO.eventId();
     }
 }

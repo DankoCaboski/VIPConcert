@@ -43,17 +43,6 @@ public class UserService {
         }
         return userListDTO;
     }
-
-    public ArrayList<Participacao> getUserEvents(int id) {
-        ArrayList<Participacao> participacoes = new ArrayList<Participacao>();
-        ArrayList<?> tempArray = participacoesRepository.getUserEvents(id);
-        if (tempArray.size() > 0) {
-            return participacoes;
-        }else{
-            return null;
-        }
-    }
-
     public static boolean userExists(Integer userId) {
         return userRepository.existByCpf(Integer.toString(userId));
     }

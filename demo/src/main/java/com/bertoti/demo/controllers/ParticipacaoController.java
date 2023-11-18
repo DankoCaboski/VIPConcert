@@ -15,27 +15,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bertoti.demo.dto.ParticipacaoDTO;
 import com.bertoti.demo.models.Participacao;
+import com.bertoti.demo.repository.EventRepository;
 import com.bertoti.demo.repository.ParticipacaoRepository;
 import com.bertoti.demo.repository.UserRepository;
 import com.bertoti.demo.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/participacao")
 @CrossOrigin(origins = "*")
 public class ParticipacaoController {
 
-    @Autowired
-    private static UserRepository userRepository;
-    @Autowired
-    private static ParticipacaoRepository participacoesRepository;
+    private static UserRepository userRepository = new UserRepository();
+    private static ParticipacaoRepository participacoesRepository = new ParticipacaoRepository();
 
     UserService userService = new UserService(userRepository, participacoesRepository);
 
     @GetMapping("/{id}/events")
-    public ResponseEntity<?> getUserEvents(@PathVariable int id) {
+    public static ResponseEntity<?> getUserEvents(@PathVariable int id) {
         //TODO: implementar
         //TODO: revisar return
-        ArrayList<Participacao> eventos = userService.getUserEvents(id);
+        log.info("acesso na funcao getUserEvents");
+        ArrayList<Participacao> eventos = participacoesRepository.getUserEvents(id);
         if(eventos != null){
             if (eventos.size() > 0) {
                 return ResponseEntity.ok(eventos);
@@ -48,6 +51,7 @@ public class ParticipacaoController {
 
     @PostMapping
     public ResponseEntity<?> registerParticipation(@RequestBody ParticipacaoDTO participacaoDTO) {
+        log.info("acesso na funcao registerParticipation");
         Boolean saved = participacoesRepository.save(participacaoDTO);
         if(saved == null){
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
