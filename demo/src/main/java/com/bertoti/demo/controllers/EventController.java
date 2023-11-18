@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,20 +33,35 @@ public class EventController{
 
     @GetMapping
     public ResponseEntity<?> getAllEvents() {
-        return null;
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(eventRepository.getAllEvents());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+
     }
 
     @PostMapping
-    public ResponseEntity<?> createEvent(EventDTO eventDTO) {
-        return null;
+    public ResponseEntity<?> createEvent(@RequestBody EventDTO eventDTO) {
+        try{
+            eventDTO = eventRepository.save(eventDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(eventDTO);
+
+        } catch (IllegalArgumentException e) {
+            // This is a client error
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            // This is a server error
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @GetMapping("generos")
     public ResponseEntity<?> getGenres(){
         ArrayList<generoDTO> genres = new ArrayList<generoDTO>();
 
-        for (Categorias categoria : Categorias.values()) {
-            genres.add(new generoDTO(categoria.name(), categoria.name().toLowerCase()));
+        for (Categorias genero : Categorias.values()) {
+            genres.add(new generoDTO(genero.name(), genero.name().toLowerCase()));
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(genres);

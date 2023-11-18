@@ -1,38 +1,73 @@
-const btSubmit = document.getElementById('btSubmit');
+const submit = document.getElementById('submit');
 const eventName = document.getElementById('eventName');
+const eventDescription = document.getElementById('eventDescription');
+const selectGenero = document.getElementById('selectGenero');
+const inputInicioEvent = document.getElementById('inputInicioEvent');
+const inputFimEvent = document.getElementById('inputFimEvent');
 
 eventName.addEventListener('input', function() {
     console.log(eventName.value);
 });
 
+submit.addEventListener('click', function() {
+    // const status = document.getElementById('StatusBar');
+    // status.style.display = 'none';
+    const dateInicio = new Date(inputInicioEvent.value);
+    const formattedDateInicio = formatDate(dateInicio);
+
+    const dateFim = new Date(inputInicioEvent.value);
+    const formattedDateFim = formatDate(dateFim);
+    
+    const body = JSON.stringify({
+        name: eventName.value,
+        description: eventDescription.value,
+        genero: selectGenero.value,
+        dateInicio: formattedDateInicio,
+        dateFim: formattedDateFim
+    });
+    console.log(body);
+    fazPost('http://localhost:8080/event', body);
+});
+
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate() + 1;
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+    return formattedDate;
+}
 
 function fazPost(url, body) {
-    let request = new XMLHttpRequest();
-    request.open("POST", url, true);
-    request.setRequestHeader('Content-Type', 'application/json');
-    const status = document.getElementById('StatusBar');
-    
-    request.onload = function() {
+    return new Promise((resolve, reject) => {
+        let request = new XMLHttpRequest();
+        request.open("POST", url, true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        // const status = document.getElementById('StatusBar');
+        
+        request.onload = function() {
+            if (request.status === 201) {
+                resolve(request.response);
+            } else {
+                if (request.status === 400) {
+                    alert(request.response);
+                } else {
+                reject(new Error('Error: ' + request.status));
+                }
+            }
+        };
 
-        console.log(request.response);
+        request.onerror = function() {
+            reject(new Error('Network error'));
+        };
 
-        if(request.status != 201){
-            status.innerHTML = 'Erro ao cadastrar usuário';
-            status.style.backgroundColor = 'red';
-        }
-        else{   
-            status.innerHTML = 'Usuário cadastrado com sucesso!'; 
-            status.style.backgroundColor = 'green';
-        }
-        status.style.display = 'block';
-    };
-    request.send(body);
-    return;
+        request.send(body);
+    });
 }
 
 async function popularGeneros() {
     const nSeAplica = [{value: "", label: ""}];
-    const selectGenero = document.getElementById('selectGenero');
 
     nSeAplica.forEach(genero => {
         const option = document.createElement('option');
@@ -61,3 +96,7 @@ async function popularGeneros() {
 }
 
 popularGeneros();
+
+
+
+

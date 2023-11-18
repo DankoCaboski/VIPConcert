@@ -18,4 +18,12 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("Number format exception in method {}: {}", methodName, e.getMessage());
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+    
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleException(Exception e){
+        StackTraceElement[] stackTrace = e.getStackTrace();
+        String methodName = stackTrace[0].getMethodName();
+        log.error("Exception in method {}: {}", methodName, e.getMessage());
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
 }
