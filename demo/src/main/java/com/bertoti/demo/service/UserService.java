@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bertoti.demo.dto.UserDTO;
+import com.bertoti.demo.models.Event;
+import com.bertoti.demo.models.Participacao;
 import com.bertoti.demo.models.User;
+import com.bertoti.demo.repository.ParticipacaoRepository;
 import com.bertoti.demo.repository.UserRepository;
 
 @Service
@@ -15,9 +18,12 @@ public class UserService {
 
     @Autowired
     private static UserRepository userRepository;
+    @Autowired
+    private static ParticipacaoRepository participacoesRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, ParticipacaoRepository participacoesRepository) {
         this.userRepository = userRepository;
+        this.participacoesRepository = participacoesRepository;
     }
 
     public UserDTO getUserById(String id) {
@@ -36,6 +42,20 @@ public class UserService {
             userListDTO.add(new UserDTO(user));
         }
         return userListDTO;
+    }
+
+    public ArrayList<Participacao> getUserEvents(int id) {
+        ArrayList<Participacao> participacoes = new ArrayList<Participacao>();
+        ArrayList<?> tempArray = participacoesRepository.getUserEvents(id);
+        if (tempArray.size() > 0) {
+            return participacoes;
+        }else{
+            return null;
+        }
+    }
+
+    public static boolean userExists(Integer userId) {
+        return userRepository.existByCpf(Integer.toString(userId));
     }
     
 }

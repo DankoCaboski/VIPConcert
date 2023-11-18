@@ -1,0 +1,16 @@
+:root{
+
+}
+
+.tabOption{
+/* display: none; */
+}
+
+.trCabecalho{
+    background-color: brown;
+    font-weight: bold;
+}
+
+.trCabecalho td{
+    color: white;
+}

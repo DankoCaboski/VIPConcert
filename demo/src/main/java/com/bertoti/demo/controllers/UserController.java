@@ -1,7 +1,10 @@
 package com.bertoti.demo.controllers;
 
 import com.bertoti.demo.dto.UserDTO;
+import com.bertoti.demo.models.Event;
+import com.bertoti.demo.models.Participacao;
 import com.bertoti.demo.models.User;
+import com.bertoti.demo.repository.ParticipacaoRepository;
 import com.bertoti.demo.repository.UserRepository;
 import com.bertoti.demo.service.UserService;
 
@@ -11,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,8 +24,10 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    private static ParticipacaoRepository participacoesRepository;
 
-    UserService userService = new UserService(userRepository);
+    UserService userService = new UserService(userRepository, participacoesRepository);
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUser(@PathVariable String id ) {

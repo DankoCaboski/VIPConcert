@@ -51,7 +51,7 @@ public class Event {
         this.promoters = new ArrayList<User>();
     }
 
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
 }

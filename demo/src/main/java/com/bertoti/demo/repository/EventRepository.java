@@ -36,4 +36,8 @@ public class EventRepository {
                 }
                 return eventos;
         }
+
+        public boolean existById(Integer id) {
+                return eventos.stream().anyMatch(evento -> evento.getId().equals(id));
+            }
 }
