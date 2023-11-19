@@ -1,9 +1,14 @@
 import { eventBanner } from './COMPONENT.event.js'
 
+const eventosDoUsuario = [1];
+
 function seedBanners() {
-    const main = document.getElementById('main')
-    const myDiv = eventBanner(1);
-    main.appendChild(myDiv);
+
+    eventosDoUsuario.forEach(eventId => {
+        const main = document.getElementById('main')
+        const myDiv = eventBanner(eventId);
+        main.appendChild(myDiv);
+    });
 }
 
 seedBanners()
