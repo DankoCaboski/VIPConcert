@@ -20,6 +20,7 @@ import lombok.Setter;
 public class Event {
 
     private int id;
+    private Integer imgId;
     private String name;
     private String description;
     private Categorias genero;
@@ -37,6 +38,7 @@ public class Event {
             this.genero = Categorias.OUTROS;
         }
         try {
+            // Exemplo de intrada de hora: 2021-10-10T10:10:10
             LocalDateTime tempInicio = LocalDateTime.parse(eventDTO.dateInicio());
             this.dateInicio = LocalDate.of(tempInicio.getYear(), tempInicio.getMonthValue(), tempInicio.getDayOfMonth());
             try {

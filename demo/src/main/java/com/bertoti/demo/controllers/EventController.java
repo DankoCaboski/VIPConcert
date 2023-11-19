@@ -40,6 +40,15 @@ public class EventController{
         }
     }
 
+    @GetMapping("/title/{eventId}")
+    public ResponseEntity<?> getEventByTitle(@PathVariable String eventId) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(eventRepository.getEventTitleById(eventId));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
     @PostMapping
     public ResponseEntity<?> createEvent(@RequestBody EventDTO eventDTO) {
         try{

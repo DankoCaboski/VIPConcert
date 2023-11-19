@@ -40,4 +40,13 @@ public class EventRepository {
         public boolean existById(Integer id) {
                 return eventos.stream().anyMatch(evento -> evento.getId().equals(id));
             }
+
+        public EventDTO getEventTitleById(String eventId) {
+                try {
+                        EventDTO eventDTO = new EventDTO(eventos.stream().filter(evento -> evento.getId().equals(Integer.parseInt(eventId))).findFirst().get());
+                        return eventDTO;
+                } catch (Exception e) {
+                        throw e;
+                }
+        }
 }
