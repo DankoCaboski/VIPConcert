@@ -3,30 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/demo/src/main/frontend/styles/shared/shared.css">
+    <link rel="stylesheet" href="/demo/src/main/frontend/styles/index/eventBanner.css">
+    <link rel="stylesheet" href="/demo/src/main/frontend/styles/index/index.css">
     <title>VIPConcert</title>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ingressos.html">Ingressos</a></li>
-                <li><a href="dadosPessoais.html">Dados pessoais</a></li>
-            </ul>
+            <div class="faixa">
+                <ul>
+                    <li><button><a href="index.html">Home</a></button></li>
+                    <li><button><a href="ingressos.html">Ingressos</a></button></li>
+                    <li><button><a href="dadosPessoais.html">Dados pessoais</a></button></li>
+                </ul>
+            </div>
+            <div class="right">
+                <img alt="Free User  Icon" width="30" src="https://cdn.iconscout.com/icon/free/png-256/free-user-533-130265.png?f=webp&w=256"
+                srcset="https://cdn.iconscout.com/icon/free/png-256/free-user-533-130265.png?f=webp&w=256 1x, https://cdn.iconscout.com/icon/free/png-256/free-user-533-130265.png?f=webp&w=512 2x">
+                <button id="btnLogin">Entrar</button>
+            </div>
         </nav>
     </header>
     <main id="main">
         <h1>Home</h1>
-        <div class="tabOption">
-            <table id="tableEvents">
-                <tr class="trCabecalho">
-                    <td>Evento</td>
-                    <td>Tipo</td>
-                    <td>Data</td>
-                    <td>Regreciva</td>
-                </tr>
-            </table>
-        </div>
+
+        <div class="eventsPost" id="eventsPost"></div>
     </main>
 
     <script type="module" src="/demo/src/main/frontend/scripts/index/index.js" defer></script>

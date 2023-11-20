@@ -26,16 +26,16 @@ public record EventDTO(
      }
 
      public EventDTO(Event event) {
-           this(
-                event.getId(),
-                event.getImgId(),
-                event.getName(),
-                event.getDescription(),
-                event.getGenero().name(),
-                event.getDateInicio().toString(),
-                event.getDateFim().toString(),
-                event.getPromoters().toString()
-           );
+          this(
+               event.getId(),
+               event.getImgId(),
+               event.getName(),
+               event.getDescription(),
+               event.getGenero().name(),
+               event.getDateInicio() == null ? null : event.getDateInicio().toString(),
+               event.getDateFim() == null ? null : event.getDateFim().toString(),
+               event.getPromoters().toString()
+          );
      }
     
 }

@@ -1,6 +1,7 @@
 package com.bertoti.demo.controllers;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bertoti.demo.dto.EventDTO;
 import com.bertoti.demo.dto.generoDTO;
 import com.bertoti.demo.enums.Categorias;
+import com.bertoti.demo.models.Event;
 import com.bertoti.demo.repository.EventRepository;
 
 @RestController
@@ -42,10 +44,17 @@ public class EventController{
 
     @GetMapping("/title/{eventId}")
     public ResponseEntity<?> getEventByTitle(@PathVariable String eventId) {
+        EventDTO retorno = null;
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(eventRepository.getEventTitleById(eventId));
+            retorno = eventRepository.getEventTitleById(eventId);
+            if (retorno != null) {
+                return ResponseEntity.status(HttpStatus.OK).body(retorno);
+            }
+            throw new NoSuchElementException("Evento não encontrado");
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.IM_USED).body(e.getMessage() + e.getStackTrace());
         }
     }
 

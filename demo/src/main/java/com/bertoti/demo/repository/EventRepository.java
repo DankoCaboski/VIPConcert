@@ -2,6 +2,8 @@ package com.bertoti.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -42,11 +44,13 @@ public class EventRepository {
             }
 
         public EventDTO getEventTitleById(String eventId) {
-                try {
-                        EventDTO eventDTO = new EventDTO(eventos.stream().filter(evento -> evento.getId().equals(Integer.parseInt(eventId))).findFirst().get());
-                        return eventDTO;
-                } catch (Exception e) {
-                        throw e;
-                }
+                Optional<Event> optionalEvent = eventos.stream()
+                .filter(evento -> evento.getId().equals(Integer.parseInt(eventId)))
+                .findFirst();
+                if (optionalEvent.isPresent()) {
+                return new EventDTO(optionalEvent.get());
+                }else {
+                return null;
+                } 
         }
 }

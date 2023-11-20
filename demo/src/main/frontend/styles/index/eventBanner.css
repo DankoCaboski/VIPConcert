@@ -1,0 +1,25 @@
+.stdBanner{
+    width: 200px;
+    height: auto;
+    background-color: rgb(182, 181, 181);
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 15px;
+    align-items: flex-start;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adiciona sombra */
+    margin: 10px;
+}
+
+.bannerImg{
+    width: 200px;
+    height: auto;
+    border-radius: 0px 0px 13px 13px;
+}
+
+.stdBanner p{
+    padding: 5px 10px 5px 10px; 
+    margin: 0;
+}
