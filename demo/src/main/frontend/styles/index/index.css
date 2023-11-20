@@ -1,9 +1,8 @@
-.eventsPost{
-    width: 100%;
-    height: 50%;
-    background-size: cover;
-    position: relative;
-    display: table-cell; /* Adiciona display: table-cell */
-    vertical-align: middle; /* Alinha verticalmente os elementos */
-    justify-content: center;
-}
+        .eventsPost {
+            width: 100%;
+            height: 50%;
+            display: grid;
+            grid-template-columns: 200px 200px 200px;
+            grid-gap: 10px; /* Add spacing between elements */
+        }
+            

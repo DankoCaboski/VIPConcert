@@ -12,7 +12,7 @@ public record EventDTO(
      String dateFim,
      String promoters) {
 
-     public EventDTO(EventDTO eventDTO, int id) {
+     public EventDTO(EventDTO eventDTO, Integer id) {
            this(
                 id,
                 eventDTO.imgId(),

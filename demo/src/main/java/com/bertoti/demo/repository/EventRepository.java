@@ -32,9 +32,10 @@ public class EventRepository {
                 return eventos.size();
         }
 
-        public List<Event> getAllEvents() {
-                for (Event event : eventos) {
-                        log.info(event.getName());
+        public ArrayList<EventDTO> getAllEvents() {
+                ArrayList<EventDTO> eventos = new ArrayList<EventDTO>();
+                for (Event event : this.eventos) {
+                        eventos.add(new EventDTO(event));
                 }
                 return eventos;
         }
