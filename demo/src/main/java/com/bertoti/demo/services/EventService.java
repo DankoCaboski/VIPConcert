@@ -1,4 +1,4 @@
-package com.bertoti.demo.service;
+package com.bertoti.demo.services;
 
 import org.springframework.stereotype.Service;
 

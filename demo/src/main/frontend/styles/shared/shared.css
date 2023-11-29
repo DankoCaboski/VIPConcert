@@ -1,9 +1,10 @@
 :root {
-    --bodyBackground-color: aqua;
+    --bodyBackground-color: white;
     --criadoComSucesso-color: green;
     --falhaAoCriar-color: red;
 }
 
 body {
     background-color: var(--bodyBackground-color);
+    width: 100%;
 }

@@ -6,6 +6,7 @@ import com.bertoti.demo.models.User;
 
 public record UserDTO(
     Integer id,
+    String password,
     String email,
     String name, 
     String cpf,
@@ -14,7 +15,7 @@ public record UserDTO(
     ){
 
     public UserDTO(User user){
-        this(user.getId(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()), user.getStatus().name());
+        this(user.getId(), user.getPassword(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()), user.getStatus().name());
     }
 
     public RolesEnum getRole(){
@@ -36,9 +37,9 @@ public record UserDTO(
     public User toUser(){
         try {
             StatusEnum.valueOf(status).name();
-            return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())), StatusEnum.valueOf(status()));
+            return new User(id(), password(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())), StatusEnum.valueOf(status()));
         } catch (Exception e) {
-            return new User(id(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())), StatusEnum.ACTIVE);
+            return new User(id(), password(), email(), name(), cpf(), RolesEnum.valueOf(validateRole(role())), StatusEnum.ACTIVE);
         }
     }
 

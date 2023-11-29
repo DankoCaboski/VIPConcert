@@ -87,4 +87,8 @@ public class UserRepository {
         }
     }
 
+    public User findByUsername(String username) {
+        return new User();
+    }
+
 }
