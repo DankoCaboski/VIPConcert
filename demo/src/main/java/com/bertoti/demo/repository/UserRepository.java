@@ -87,8 +87,14 @@ public class UserRepository {
         }
     }
 
-    public User findByUsername(String username) {
-        return new User();
+    public boolean existByName(String username) {
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(username)) {
+                return true;
+                
+            }
+        }
+        return false;
     }
 
 }

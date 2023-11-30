@@ -34,7 +34,10 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthenticationDTO data) {
         log.info("Login attempt with username: {}", data.username());
-        return ResponseEntity.ok().build();
+        if (userRepository.existByName(data.username())) {return ResponseEntity.ok().build();} else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        
     }
 
     @PostMapping("/register")

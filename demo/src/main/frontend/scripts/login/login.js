@@ -36,10 +36,11 @@ function fazPost(url, body) {
             if (request.status === 200) {
                 resolve(request.response);
             } else {
-                if (request.status === 400) {
-                    alert(request.response);
-                } else {
+                if (request.status !== 401) {
                     reject(new Error('Error: ' + request.status));
+                } else {
+                    username.style.border = "1px solid red";
+                    password.style.border = "1px solid red";
                 }
             }
         };
