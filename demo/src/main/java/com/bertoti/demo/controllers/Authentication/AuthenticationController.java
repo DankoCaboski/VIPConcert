@@ -34,10 +34,15 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthenticationDTO data) {
         log.info("Login attempt with username: {}", data.username());
-        if (userRepository.existByName(data.username())) {return ResponseEntity.ok().build();} else {
+        if (userRepository.existByName(data.username())) {
+            if(userRepository.findByName(data.username()).getPassword().equals(data.password())){
+                return ResponseEntity.ok().build();
+            }else{
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        
+        } 
     }
 
     @PostMapping("/register")

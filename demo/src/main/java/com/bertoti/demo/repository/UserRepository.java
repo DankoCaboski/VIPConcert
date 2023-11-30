@@ -97,4 +97,13 @@ public class UserRepository {
         return false;
     }
 
+    public User findByName(String username) {
+        User foundUser = null;
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(username)) {
+                foundUser = user;
+            }
+        }
+        return foundUser;
+    }
 }

@@ -14,6 +14,7 @@ public class Application {
 		System.out.println("Server is runing");
 		User user = new User();
 		user.setName("teste");
+		user.setPassword("teste");
 		UserRepository.users.add(user);
 	}
 }
