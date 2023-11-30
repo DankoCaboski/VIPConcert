@@ -52,3 +52,16 @@ function fazPost(url, body) {
         request.send(body);
     });
 }
+
+const octocat = document.getElementById("octocat");
+octocat.addEventListener('click', function(event) {
+    window.location.href = "https://github.com/DankoCaboski";
+    }
+);
+
+const register = document.getElementById("register");
+register.addEventListener('click', function(event) {
+    console.log("register");
+    window.location.href = "http://127.0.0.1:5500/demo/src/main/frontend/pages/user/USER.cadastro.html";
+    }
+);

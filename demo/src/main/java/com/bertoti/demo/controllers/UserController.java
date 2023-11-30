@@ -8,6 +8,8 @@ import com.bertoti.demo.repository.ParticipacaoRepository;
 import com.bertoti.demo.repository.UserRepository;
 import com.bertoti.demo.services.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/users")
 @CrossOrigin(origins = "*")

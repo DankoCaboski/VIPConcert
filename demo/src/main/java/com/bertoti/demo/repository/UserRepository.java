@@ -25,8 +25,10 @@ public class UserRepository {
     }
     
     public User save(User user) {
-        users.add(user);
-        return user;
+        if(users.add(user)){
+            return user;
+        }
+        return null;
     }
 
     public User findById(int id) {

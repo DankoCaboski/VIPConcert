@@ -1,5 +1,8 @@
 package com.bertoti.demo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,9 +15,18 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 		System.out.println("Server is runing");
+
+		Collection<User> users = new ArrayList<>();
 		User user = new User();
 		user.setName("teste");
 		user.setPassword("teste");
-		UserRepository.users.add(user);
+		users.add(user);
+
+		User userAdm = new User();
+		userAdm.setName("admin");
+		userAdm.setPassword("admin");
+		users.add(userAdm);
+
+		UserRepository.users.addAll(users);
 	}
 }

@@ -1,4 +1,4 @@
-package com.bertoti.demo.infra.security;
+package com.bertoti.demo.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +19,17 @@ public class SecurityConfigurations {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+            .cors() // Adicione esta linha para liberar o CORS
+            .and()
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/event").hasRole("ADMIN")
-                .anyRequest().permitAll()
-                )
+                .anyRequest().authenticated()
+            )
             .build();
     }
 

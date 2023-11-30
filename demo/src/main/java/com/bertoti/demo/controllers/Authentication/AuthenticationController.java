@@ -46,25 +46,18 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> createUser(@RequestBody UserDTO data) {
+    public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         try {
-            if (userRepository.existByCpf(data.cpf())) {
+            User user = null;
+            user = userRepository.save(new User(null, userDTO.password(), userDTO.email(), userDTO.name(), userDTO.cpf(), userDTO.getRole(), userDTO.getStatus()));
+            log.info("Creating user with name: {}", user.getName());
+            if(user != null){
+                return ResponseEntity.status(HttpStatus.CREATED).body(null);
+            }
                 return ResponseEntity.status(HttpStatus.CONFLICT).build();
-            }
-            else{
-                String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-                
-                data = new UserDTO(data.id(), encryptedPassword, data.email(), data.name(), data.cpf(), data.role(), data.status());
-
-                User newUser =  userRepository.save(data);
-                return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
-            }
-        } catch (HttpMessageNotReadableException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request body format");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            log.error("Error while creating user", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace());
         }
     }
-
-    
 }

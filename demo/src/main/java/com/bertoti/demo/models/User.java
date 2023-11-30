@@ -32,6 +32,8 @@ public class User  implements UserDetails{
         return role;
     }
 
+    
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (this.role == RolesEnum.ADMIN) {

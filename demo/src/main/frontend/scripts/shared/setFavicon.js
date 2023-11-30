@@ -6,7 +6,6 @@ if (shortcutIcon) {
     shortcutIcon.setAttribute("rel", "shortcut icon");
     shortcutIcon.setAttribute("href", "/demo/src/main/frontend/assets/favicon.ico");
     document.head.appendChild(shortcutIcon);
-    console.log("shortcutIcon", shortcutIcon);
 
 }
 

@@ -1,5 +1,5 @@
 :root {
-    --bodyBackground-color: white;
+    --bodyBackground-color: rgb(255, 255, 255);
     --criadoComSucesso-color: green;
     --falhaAoCriar-color: red;
 }
