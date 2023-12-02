@@ -1,10 +1,3 @@
-:root {
-    --bodyBackground-color: aqua;
-    --criadoComSucesso-color: green;
-    --falhaAoCriar-color: red;
-}
-
 body h1 {
-    background-color: var(--criadoComSucesso-color);
     display: none;
 }

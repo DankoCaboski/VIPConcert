@@ -8,23 +8,42 @@
     <title>Home</title>
 </head>
 <body>
-    <div>
-        <button>Ingressos</button>
-        <button>Dados pessoais</button>
-    </div>
-    <div class="tabOption">
-        <table id="tableEvents">
-            <tr class="trCabecalho">
-                <td>Evento</td>
-                <td>Tipo</td>
-                <td>Data</td>
-                <td>Regreciva</td>
-            </tr>
-        </table>
-    </div>
-    
-    <script type="text/javascript" src="/demo/src/main/frontend/scripts/index/index.js" defer></script>
-    <script type="text/javascript" src="/demo/src/main/frontend/scripts/shared/setFavicon.js" defer></script>
 
+    <header id="header">
+        <h1>VIPConcert</h1>
+        <nav>
+            <ul>
+                <li><a>Home</a></li>
+                <li><a href="https://github.com/DankoCaboski/VIPConcert#readme">About us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="container">
+
+            <div>
+                <button>Ingressos</button>
+                <button>Dados pessoais</button>
+            </div>
+            <div class="tabOption">
+                <table id="tableEvents">
+                    <tr class="trCabecalho">
+                        <td>Evento</td>
+                        <td>Tipo</td>
+                        <td>Data</td>
+                        <td>Regreciva</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+            
+    </main>
+
+    <script type="text/javascript" src="/demo/src/main/frontend/scripts/index/index.js" defer></script>
+    <script type="text/javascript" src="/demo/src/main/frontend/scripts/shared/shared.js" defer></script>
+    
 </body>
 </html>

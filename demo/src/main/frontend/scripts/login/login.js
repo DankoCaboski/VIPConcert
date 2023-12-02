@@ -53,12 +53,6 @@ function fazPost(url, body) {
     });
 }
 
-const octocat = document.getElementById("octocat");
-octocat.addEventListener('click', function(event) {
-    window.location.href = "https://github.com/DankoCaboski";
-    }
-);
-
 const register = document.getElementById("register");
 register.addEventListener('click', function(event) {
     console.log("register");

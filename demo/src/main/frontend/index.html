@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/demo/src/main/frontend/styles/shared/shared.css">
+    <link rel="stylesheet" href="/demo/src/main/frontend/styles/index/index.css">
     <title>VIPConcert</title>
 </head>
 <body>
@@ -11,27 +12,33 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="ingressos.html">Ingressos</a></li>
-                <li><a href="dadosPessoais.html">Dados pessoais</a></li>
+                <li><a id="entrar">Entrar</a></li>
             </ul>
         </nav>
     </header>
-    <main id="main">
-        <h1>Home</h1>
-        <div class="tabOption">
-            <table id="tableEvents">
-                <tr class="trCabecalho">
-                    <td>Evento</td>
-                    <td>Tipo</td>
-                    <td>Data</td>
-                    <td>Regreciva</td>
-                </tr>
-            </table>
+
+    <main>
+
+        <div id="container">
+
+            <h1>Home</h1>
+            <div class="tabOption">
+                <table id="tableEvents">
+                    <tr class="trCabecalho">
+                        <td>Evento</td>
+                        <td>Tipo</td>
+                        <td>Data</td>
+                        <td>Regreciva</td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
+
     </main>
 
     <script type="module" src="/demo/src/main/frontend/scripts/index/index.js" defer></script>
-    <script type="text/javascript" src="/demo/src/main/frontend/scripts/shared/setFavicon.js" defer></script>
+    <script type="text/javascript" src="/demo/src/main/frontend/scripts/shared/shared.js" defer></script>
 
 
 </body>

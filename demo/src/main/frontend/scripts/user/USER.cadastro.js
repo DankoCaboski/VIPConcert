@@ -33,21 +33,16 @@ function fazPost(url, body) {
     let request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader('Content-Type', 'application/json');
-    const status = document.getElementById('StatusBar');
     
     request.onload = function() {
 
         console.log(request.response);
 
         if(request.status != 201){
-            status.innerHTML = 'Erro ao cadastrar usuário';
-            status.style.backgroundColor = 'red';
             console.log(request.status);
             console.log("Body: " + body);
         }
         else{   
-            status.innerHTML = 'Usuário cadastrado com sucesso!'; 
-            status.style.backgroundColor = 'green';
             window.location.href = "http://127.0.0.1:5500/demo/src/main/frontend/pages/user/USER.home.html";
         }
         status.style.display = 'block';

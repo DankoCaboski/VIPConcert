@@ -9,27 +9,34 @@
 </head>
 <body>
 
-    <form id="user-form">
-        <label for="eventName">Evento:</label>
-        <input class="camposInput" type="text" id="eventName" name="eventName" autocomplete="name">
+    <main>
 
-        <label for="eventDescription">Descrição:</label>
-        <input class="camposInput" type="text" id="eventDescription" name="eventDescription" autocomplete="off">
+        <div id="container">
+                
+            <form id="user-form">
+                <label for="eventName">Evento:</label>
+                <input class="camposInput" type="text" id="eventName" name="eventName" autocomplete="name">
+                
+                <label for="eventDescription">Descrição:</label>
+                <input class="camposInput" type="text" id="eventDescription" name="eventDescription" autocomplete="off">
+                
+                <label for="selectGenero">Genero:</label>
+                <select name="select" id="selectGenero"></select>
+                
+                <label for="inputInicioEvent">Início:</label>
+                <input class="camposInput" id="inputInicioEvent" type="date"/>
+                
+                <label for="inputFimEvent">Fim:</label>
+                <input class="camposInput" id="inputFimEvent" type="date"/>
+                
+                <input class="camposInput btn" type="submit" value="Salvar" id="submit">
+            </form>
+            
+        </div>
+        
+    </main>
 
-        <label for="selectGenero">Genero:</label>
-        <select name="select" id="selectGenero"></select>
-
-        <label for="inputInicioEvent">Início:</label>
-        <input class="camposInput" id="inputInicioEvent" type="date"/>
-
-        <label for="inputFimEvent">Fim:</label>
-        <input class="camposInput" id="inputFimEvent" type="date"/>
-
-        <input class="camposInput btn" type="submit" value="Salvar" id="submit">
-    </form>
-
-    <script type="text/javascript" src="/demo/src/main/frontend/scripts/event/EVENT.cadastro.js" defer></script>
-    <script type="text/javascript" src="/demo/src/main/frontend/scripts/shared/setFavicon.js" defer></script>
-
+<script type="text/javascript" src="/demo/src/main/frontend/scripts/event/EVENT.cadastro.js" defer></script>
+<script type="text/javascript" src="/demo/src/main/frontend/scripts/shared/shared.js" defer></script>
 </body>
 </html>

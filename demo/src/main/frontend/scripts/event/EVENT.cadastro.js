@@ -10,8 +10,6 @@ eventName.addEventListener('input', function() {
 });
 
 submit.addEventListener('click', function() {
-    // const status = document.getElementById('StatusBar');
-    // status.style.display = 'none';
     const dateInicio = new Date(inputInicioEvent.value);
     const formattedDateInicio = formatDate(dateInicio);
 
@@ -44,7 +42,6 @@ function fazPost(url, body) {
         let request = new XMLHttpRequest();
         request.open("POST", url, true);
         request.setRequestHeader('Content-Type', 'application/json');
-        // const status = document.getElementById('StatusBar');
         
         request.onload = function() {
             if (request.status === 201) {
