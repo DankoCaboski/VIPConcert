@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.bertoti.demo.dto.ParticipacaoDTO;
 import com.bertoti.demo.models.Participacao;
-import com.bertoti.demo.service.EventService;
-import com.bertoti.demo.service.UserService;
+import com.bertoti.demo.services.EventService;
+import com.bertoti.demo.services.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 

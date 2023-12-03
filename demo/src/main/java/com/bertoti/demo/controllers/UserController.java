@@ -6,7 +6,9 @@ import com.bertoti.demo.models.Participacao;
 import com.bertoti.demo.models.User;
 import com.bertoti.demo.repository.ParticipacaoRepository;
 import com.bertoti.demo.repository.UserRepository;
-import com.bertoti.demo.service.UserService;
+import com.bertoti.demo.services.UserService;
+
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/users")
 @CrossOrigin(origins = "*")
@@ -55,25 +58,7 @@ public class UserController {
     public ResponseEntity<?> getAllUsers() {
         return getUser("all");
     }
-
-    @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
-        try {
-            if (userRepository.existByCpf(userDTO.cpf())) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).build();
-            }
-            else{
-                User newUser =  userRepository.save(userDTO);
-                // teste.printUsers();
-                return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
-            }
-        } catch (HttpMessageNotReadableException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request body format");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
-    }
-
+    
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@PathVariable int id, @RequestBody UserDTO userDTO) {
         User internalUser = userRepository.findById(id);

@@ -25,8 +25,10 @@ public class UserRepository {
     }
     
     public User save(User user) {
-        users.add(user);
-        return user;
+        if(users.add(user)){
+            return user;
+        }
+        return null;
     }
 
     public User findById(int id) {
@@ -87,4 +89,23 @@ public class UserRepository {
         }
     }
 
+    public boolean existByName(String username) {
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(username)) {
+                return true;
+                
+            }
+        }
+        return false;
+    }
+
+    public User findByName(String username) {
+        User foundUser = null;
+        for (User user : users) {
+            if (user.getName().equalsIgnoreCase(username)) {
+                foundUser = user;
+            }
+        }
+        return foundUser;
+    }
 }

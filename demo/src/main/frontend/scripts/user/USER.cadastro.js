@@ -6,16 +6,17 @@ const cpf = document.querySelector('#cpf');
 const role = document.querySelector('#role');
 const id = document.querySelector('#id'); 
 
-const url = "http://localhost:8080/users";
+const url = "http://localhost:8080/auth/register";
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     
-    body = {
+    const body = {
         name: name.value,
         email: email.value,
         cpf: cpf.value,
-        role: role.value
+        role: role.value,
+        status : 'ACTIVE'
     }
 
     if (name.value === '' || email.value === '' || cpf.value === '' || role.value === '') {
@@ -23,31 +24,29 @@ form.addEventListener('submit', (event) => {
         
     }
     else{
-        fazPost(url, JSON.stringify(body));
+        fazPost(url, JSON.stringify(body))
     }
-    
 });
+
 
 function fazPost(url, body) {
     let request = new XMLHttpRequest();
     request.open("POST", url, true);
     request.setRequestHeader('Content-Type', 'application/json');
-    const status = document.getElementById('StatusBar');
     
     request.onload = function() {
 
         console.log(request.response);
 
         if(request.status != 201){
-            status.innerHTML = 'Erro ao cadastrar usuário';
-            status.style.backgroundColor = 'red';
+            console.log(request.status);
+            console.log("Body: " + body);
         }
         else{   
-            status.innerHTML = 'Usuário cadastrado com sucesso!'; 
-            status.style.backgroundColor = 'green';
+            window.location.href = "http://127.0.0.1:5500/demo/src/main/frontend/pages/user/USER.home.html";
         }
         status.style.display = 'block';
     };
     request.send(body);
-    return;
+    return request.status;
 }
