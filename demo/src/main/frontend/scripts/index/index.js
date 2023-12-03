@@ -1,6 +1,6 @@
 import { eventBanner } from './COMPONENT.event.js'
 
-const eventosDoUsuario = [1];
+const eventos = [];
 
 function seedBanners() {
 

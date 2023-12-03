@@ -2,6 +2,8 @@ package com.bertoti.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -31,9 +33,10 @@ public class EventRepository {
                 return eventos.size();
         }
 
-        public List<Event> getAllEvents() {
-                for (Event event : eventos) {
-                        log.info(event.getName());
+        public ArrayList<EventDTO> getAllEvents() {
+                ArrayList<EventDTO> eventos = new ArrayList<EventDTO>();
+                for (Event event : this.eventos) {
+                        eventos.add(new EventDTO(event));
                 }
                 return eventos;
         }
@@ -42,28 +45,10 @@ public class EventRepository {
                 return eventos.stream().anyMatch(evento -> evento.getId().equals(id));
             }
 
-        public EventDTO getEventById(String eventId) {
+        public EventDTO getEventTitleById(String eventId) {
                 try {
-                        for (Event event : eventos) {
-                            if (event.getId().equals(Integer.parseInt(eventId))) {
-                                    return new EventDTO(event);
-                                
-                            }    
-                        }
-                        return null;
-                } catch (Exception e) {
-                        throw e;
-                }
-        }
-
-        public static EventDTO getEventByIdStatic(String eventId) {
-                try {
-                        for (Event event : eventos) {
-                            if (event.getId().equals(Integer.parseInt(eventId))) {
-                                return new EventDTO(event);
-                            }    
-                        }
-                        return null;
+                        EventDTO eventDTO = new EventDTO(eventos.stream().filter(evento -> evento.getId().equals(Integer.parseInt(eventId))).findFirst().get());
+                        return eventDTO;
                 } catch (Exception e) {
                         throw e;
                 }

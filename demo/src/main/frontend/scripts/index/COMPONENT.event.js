@@ -1,46 +1,58 @@
 export const eventBanner = (eventId) => {
-    const component = document.createElement('div');
+    let component = document.createElement('div');
+    component.classList.add('stdBanner');
 
     const imageElement = document.createElement('img');
+
+    let statusFetch = true;
 
     // Fazer a chamada HTTP para obter o título do evento
     fetch(`http://localhost:8080/event/${eventId}`)
     .then(response => response.json())
     .then(data => {
         // Criar o elemento de título e adicionar ao componente
+
         const captionElement = document.createElement('p');
         captionElement.innerHTML = data.name;
         component.appendChild(captionElement);
         
+        const dateElement = document.createElement('p');
+        if(data.dateInicio != null){
+            dateElement.innerHTML = data.dateInicio;
+        } else {
+            dateElement.innerHTML = "Em breve";
+        }
+        component.appendChild(dateElement);
+        
         if(data.imgId == null){
             if(data.genero == "FESTA" || data.genero == "SHOW"){
                 imageElement.src = "http://localhost:8080/images/defaultShowImg.jpg";
-                imageElement.style.width = "200px";
-                imageElement.style.height = "150px";
                 component.appendChild(imageElement);
             }else{
                 if(data.genero == "CONGRESSO"){
                     imageElement.src = "http://localhost:8080/images/defaultCongressImg.jpg";
-                    imageElement.style.width = "200px";
-                    imageElement.style.height = "150px";
                     component.appendChild(imageElement);
                 }else{
                     imageElement.src = "http://localhost:8080/images/defaultTheatreImg.jpg";
-                    imageElement.style.width = "200px";
-                    imageElement.style.height = "150px";
-                    component.appendChild(imageElement);
                 }
+                
             }
-            
-    }
-})
+            imageElement.classList.add('bannerImg');
+            component.appendChild(imageElement);
+        }else{
+            //TODO: Fazer a chamada HTTP para obter a imagem do evento em funcao do id
+        }
+
+
+        })
         .catch(error => {
-            console.error('Erro ao obter o título do evento:', error);
+            console.error("error: ", error);
+            statusFetch = false;
         });
-        
-    
-    const priceElement = document.createElement('p');
-    component.appendChild(priceElement);
+
+    if (statusFetch !== true) {
+        return;
+    }
     
     return component;
 }
