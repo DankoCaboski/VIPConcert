@@ -1,4 +1,4 @@
-package com.bertoti.demo.security;
+package com.bertoti.demo.infra.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,11 +24,11 @@ public class SecurityConfigurations {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/event").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                //.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                //.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                //.requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
+                //.requestMatchers(HttpMethod.POST, "/event").hasRole("ADMIN")
+                .anyRequest().permitAll()
             )
             .build();
     }

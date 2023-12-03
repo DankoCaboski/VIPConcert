@@ -1,5 +1,4 @@
 window.onload = () => {
-    console.log("onload");
     injectFontLink();
     setFavicon();
     let footerContent = footer();
@@ -15,7 +14,6 @@ window.onload = () => {
 }
 
 function injectFontLink() {
-    console.log("injectFontLink");
     var fontLink = document.createElement("link");
     fontLink.setAttribute("href", "https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap");
     fontLink.setAttribute("rel", "stylesheet");
@@ -23,7 +21,6 @@ function injectFontLink() {
 }
 
 function setFavicon() {
-    console.log("setFavicon");
     var shortcutIcon = document.querySelector("link[rel='shortcut icon']");
     if (shortcutIcon) {
         shortcutIcon.href = "favicon.ico";

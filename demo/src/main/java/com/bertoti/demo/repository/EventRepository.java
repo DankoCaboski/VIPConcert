@@ -20,6 +20,7 @@ public class EventRepository {
                         Event event = new Event(eventDTO);
                         eventos.add(event);
                         eventDTO = new EventDTO(eventDTO, event.getId());
+                        log.info("Event created: " + eventDTO.id());
                         return eventDTO;
                 } catch (Exception e) {
                         throw e;
@@ -41,10 +42,28 @@ public class EventRepository {
                 return eventos.stream().anyMatch(evento -> evento.getId().equals(id));
             }
 
-        public EventDTO getEventTitleById(String eventId) {
+        public EventDTO getEventById(String eventId) {
                 try {
-                        EventDTO eventDTO = new EventDTO(eventos.stream().filter(evento -> evento.getId().equals(Integer.parseInt(eventId))).findFirst().get());
-                        return eventDTO;
+                        for (Event event : eventos) {
+                            if (event.getId().equals(Integer.parseInt(eventId))) {
+                                    return new EventDTO(event);
+                                
+                            }    
+                        }
+                        return null;
+                } catch (Exception e) {
+                        throw e;
+                }
+        }
+
+        public static EventDTO getEventByIdStatic(String eventId) {
+                try {
+                        for (Event event : eventos) {
+                            if (event.getId().equals(Integer.parseInt(eventId))) {
+                                return new EventDTO(event);
+                            }    
+                        }
+                        return null;
                 } catch (Exception e) {
                         throw e;
                 }

@@ -3,6 +3,7 @@ package com.bertoti.demo.models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.bertoti.demo.dto.EventDTO;
 import com.bertoti.demo.enums.Categorias;
@@ -39,11 +40,19 @@ public class Event {
         }
         try {
             // Exemplo de intrada de hora: 2021-10-10T10:10:10
-            LocalDateTime tempInicio = LocalDateTime.parse(eventDTO.dateInicio());
-            this.dateInicio = LocalDate.of(tempInicio.getYear(), tempInicio.getMonthValue(), tempInicio.getDayOfMonth());
+            if(eventDTO.dateInicio().equals("") || eventDTO.dateInicio() == null) {
+                this.dateInicio = null;
+            }else {
+                LocalDateTime tempInicio = LocalDateTime.parse(eventDTO.dateInicio());
+                this.dateInicio = LocalDate.of(tempInicio.getYear(), tempInicio.getMonthValue(), tempInicio.getDayOfMonth());
+            }
             try {
-            LocalDateTime tempFim = LocalDateTime.parse(eventDTO.dateInicio());
-            this.dateFim = LocalDate.of(tempFim.getYear(), tempFim.getMonthValue(), tempFim.getDayOfMonth());
+                if (eventDTO.dateFim().equals("") || eventDTO.dateFim() == null) {
+                    this.dateFim = null;
+                }else{
+                    LocalDateTime tempFim = LocalDateTime.parse(eventDTO.dateInicio());
+                    this.dateFim = LocalDate.of(tempFim.getYear(), tempFim.getMonthValue(), tempFim.getDayOfMonth());
+                }
             } catch (Exception e) {
                 throw new IllegalArgumentException("Data de fim inválida");
             }
@@ -55,5 +64,35 @@ public class Event {
 
     public Integer getId() {
         return this.id;
+    }
+
+    public String getDateInicioAsString() {
+        if (this.dateInicio != null) {
+            return this.dateInicio.toString();
+        } else {
+            return "";
+            
+        }
+    }
+
+    public String getDateFimAsString() {
+        if (this.dateFim != null) {
+            return this.dateFim.toString();
+        } else {
+            return "";
+            
+        }
+    }
+
+    public String getPromotersAsString() {
+        String promotersList = "";
+        if (promoters == null) {
+            return promotersList;
+        }
+        for (User user : promoters) {
+            promotersList.concat(",");
+            promotersList.concat(user.getName());
+        }
+        return promotersList;
     }
 }

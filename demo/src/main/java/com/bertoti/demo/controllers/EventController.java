@@ -26,24 +26,23 @@ public class EventController{
     @Autowired
     EventRepository eventRepository;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getEventById(@PathVariable String id) {
-        return null;
+    @GetMapping("/{eventId}")
+    public ResponseEntity<?> getEventById(@PathVariable String eventId) {
+        try {
+            EventDTO eventDTO = eventRepository.getEventById(eventId);
+            if (eventDTO == null) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            }
+                return ResponseEntity.status(HttpStatus.OK).body(eventDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getStackTrace());
+        }
     }
 
     @GetMapping
     public ResponseEntity<?> getAllEvents() {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(eventRepository.getAllEvents());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
-    }
-
-    @GetMapping("/title/{eventId}")
-    public ResponseEntity<?> getEventByTitle(@PathVariable String eventId) {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(eventRepository.getEventTitleById(eventId));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

@@ -32,9 +32,9 @@ public record EventDTO(
                 event.getName(),
                 event.getDescription(),
                 event.getGenero().name(),
-                event.getDateInicio().toString(),
-                event.getDateFim().toString(),
-                event.getPromoters().toString()
+                event.getDateInicioAsString(),
+                event.getDateFimAsString(),
+                event.getPromotersAsString()
            );
      }
     

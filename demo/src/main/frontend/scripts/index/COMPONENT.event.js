@@ -4,7 +4,7 @@ export const eventBanner = (eventId) => {
     const imageElement = document.createElement('img');
 
     // Fazer a chamada HTTP para obter o título do evento
-    fetch(`http://localhost:8080/event/title/${eventId}`)
+    fetch(`http://localhost:8080/event/${eventId}`)
     .then(response => response.json())
     .then(data => {
         // Criar o elemento de título e adicionar ao componente
