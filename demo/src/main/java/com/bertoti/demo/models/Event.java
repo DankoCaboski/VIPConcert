@@ -13,7 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -36,28 +38,34 @@ public class Event {
         try {
             this.genero = Categorias.valueOf(eventDTO.genero());
         } catch (Exception e) {
+            log.info("Evento criado com categoria outros");
             this.genero = Categorias.OUTROS;
         }
         try {
             // Exemplo de intrada de hora: 2021-10-10T10:10:10
-            if(eventDTO.dateInicio().equals("") || eventDTO.dateInicio() == null) {
-                this.dateInicio = null;
+            if(eventDTO.dateInicio() == "" || eventDTO.dateInicio() == null) {
+                if (eventDTO.dateFim() == null) {
+                    this.dateInicio = null;
+                    this.dateFim = null;
+                    }
             }else {
                 LocalDateTime tempInicio = LocalDateTime.parse(eventDTO.dateInicio());
                 this.dateInicio = LocalDate.of(tempInicio.getYear(), tempInicio.getMonthValue(), tempInicio.getDayOfMonth());
             }
             try {
-                if (eventDTO.dateFim().equals("") || eventDTO.dateFim() == null) {
+                if (eventDTO.dateFim() == "" || eventDTO.dateFim() == null) {
                     this.dateFim = null;
                 }else{
                     LocalDateTime tempFim = LocalDateTime.parse(eventDTO.dateInicio());
                     this.dateFim = LocalDate.of(tempFim.getYear(), tempFim.getMonthValue(), tempFim.getDayOfMonth());
                 }
             } catch (Exception e) {
-                throw new IllegalArgumentException("Data de fim inválida");
+                log.info("Data de fim inválida");
+                throw new IllegalArgumentException(e.getMessage());
             }
         } catch (Exception e) {
-            throw new IllegalArgumentException("Data de inicio inválida");
+            log.info("Data de inicio inválida");
+            throw new IllegalArgumentException(e.getMessage());
         }
         this.promoters = new ArrayList<User>();
     }

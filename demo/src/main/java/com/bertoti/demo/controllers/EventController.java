@@ -29,7 +29,7 @@ public class EventController{
     @GetMapping("/{eventId}")
     public ResponseEntity<?> getEventById(@PathVariable String eventId) {
         try {
-            EventDTO eventDTO = eventRepository.getEventById(eventId);
+            EventDTO eventDTO = eventRepository.findById(Integer.valueOf(eventId));
             if (eventDTO == null) {
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
             }

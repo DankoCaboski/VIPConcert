@@ -51,6 +51,8 @@ public class DataSeeder {
             event.setName("Evento " + i);
             Categorias[] categories = Categorias.values();
             event.setGenero(categories[random.nextInt(categories.length)]);
+            event.setDateInicio(null);
+            event.setDateFim(null);
 
             event.setPromoters(null);
             EventDTO eventDTO = new EventDTO(event);

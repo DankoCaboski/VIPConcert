@@ -34,7 +34,7 @@ public record EventDTO(
                event.getGenero().name(),
                event.getDateInicio() == null ? null : event.getDateInicio().toString(),
                event.getDateFim() == null ? null : event.getDateFim().toString(),
-               event.getPromoters().toString()
+               event.getPromoters() == null ? null : event.getPromoters().toString()
           );
      }
     

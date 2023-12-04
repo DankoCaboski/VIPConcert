@@ -53,4 +53,14 @@ public class EventRepository {
                         throw e;
                 }
         }
+
+        public EventDTO findById(Integer id) {
+                Optional<Event> optionalEvent = eventos.stream().filter(evento -> evento.getId().equals(id)).findFirst();
+                if (optionalEvent.isPresent()) {
+                        EventDTO eventDTO = new EventDTO(optionalEvent.get());
+                        return eventDTO;
+                } else {
+                        throw new NoSuchElementException();
+                }
+        }
 }
