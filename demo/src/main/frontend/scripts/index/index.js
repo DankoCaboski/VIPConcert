@@ -14,3 +14,4 @@ function seedBanners() {
 }
 
 seedBanners()
+console.log( "token: ", localStorage.getItem("token"));

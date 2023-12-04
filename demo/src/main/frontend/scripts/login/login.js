@@ -59,3 +59,5 @@ register.addEventListener('click', function(event) {
     window.location.href = "http://127.0.0.1:5500/demo/src/main/frontend/pages/user/USER.cadastro.html";
     }
 );
+
+console.log( "token: ", localStorage.getItem("token"));

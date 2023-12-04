@@ -37,7 +37,7 @@ main .container{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: auto;
 }
 
 footer {
@@ -98,23 +98,61 @@ body {
     min-height: 100vh;
 }
 
+body .user-home-nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+     width: 100%;
+}
+
+body .otpion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+
+}
+
 form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 50%;
-    border-radius: 50px;
-    padding: 10px;
-
+    width: 100%;
+    height: 100%;
 }
+
 input{
     border-radius: 50px;
-    border: 1px solid #333;
+    border: 1px solid #ccc;
     padding: 10px;
-    margin: 10px;
-    width: calc(var(--inputSize) * 10);
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input:hover{
+    cursor:pointer;
+}
+
+.camposInput{
+    height: 40px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+select{
+    border: 1px solid #ccc;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 ul{
@@ -145,4 +183,21 @@ h1{
     color: white;
     text-align: center;
     padding: 0% 3% 0% 3%;
+}
+
+tr{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.discreetActionButton{
+    background-color: transparent;
+    color: rgb(146, 142, 142);
+    border: none;
+}
+
+.discreetActionButton:hover{
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    cursor:pointer;
 }

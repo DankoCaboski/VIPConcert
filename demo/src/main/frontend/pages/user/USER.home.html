@@ -13,8 +13,8 @@
         <h1>VIPConcert</h1>
         <nav>
             <ul>
-                <li><a>Home</a></li>
                 <li><a href="https://github.com/DankoCaboski/VIPConcert#readme">About us</a></li>
+                <li><a id="sair" href="http://127.0.0.1:5500/demo/src/main/frontend/index.html">Sair</a></li>
             </ul>
         </nav>
     </header>
@@ -23,9 +23,9 @@
 
         <div class="container">
 
-            <div>
-                <button>Ingressos</button>
-                <button>Dados pessoais</button>
+            <div class="user-home-nav">
+                <button id="meus-eventos" class="otpion">Meus Eventos</button>
+                <button id="cadastrar-evento" class="otpion">Cadastrar meu evento</button>
             </div>
             <div class="tabOption">
                 <table id="tableEvents">
@@ -42,7 +42,7 @@
             
     </main>
 
-    <script type="text/javascript" src="/demo/src/main/frontend/scripts/index/index.js" defer></script>
+    <script type="text/javascript" src="/demo/src/main/frontend/scripts/user/home/USER.home.js" defer></script>
     <script type="text/javascript" src="/demo/src/main/frontend/scripts/shared/shared.js" defer></script>
     
 </body>
