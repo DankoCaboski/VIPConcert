@@ -9,7 +9,7 @@ window.onload = () => {
         octocat.addEventListener('click', function(event) {
         window.location.href = "https://github.com/DankoCaboski";
         }
-    );;
+    );
 
 }
 

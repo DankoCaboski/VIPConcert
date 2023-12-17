@@ -6,13 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.bertoti.demo.infra.dataSeeder.DataSeeder;
 
 @SpringBootApplication
-public class Application {
+public class app {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(app.class, args);
 		DataSeeder.seedAll();
 		System.out.println("Server is runing");
-
-
 	}
 }
