@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+        # porta do host : porta do container
+      - "3000:8080"
+    volumes:
+      - .:/VIPConcertVolumes
+      - vipconcert01:/var/log
+volumes:
+  vipconcert01: {}
