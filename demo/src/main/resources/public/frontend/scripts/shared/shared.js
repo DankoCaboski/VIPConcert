@@ -6,6 +6,26 @@ if(sair){
     })
 }
 
+const home = document.querySelector('#home');
+if(home){
+
+    var path = window.location.pathname;
+    var page = path.split("/").pop();
+
+    console.log("page: ", page);
+
+    if(page == 'login.html'){
+        home.addEventListener('click', () => {
+            window.location.href = '../../index.html';
+        })
+    }else{
+        home.addEventListener('click', () => {
+            window.localStorage.removeItem('token');
+            window.location.href = '../../../index.html';
+        })
+    }
+}
+
 window.onload = () => {
     injectFontLink();
     setFavicon();
