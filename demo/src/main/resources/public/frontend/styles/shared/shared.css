@@ -169,6 +169,7 @@ li{
 }
 
 li:hover{
+    cursor:pointer;
     background-color: #8b8b8b;
     border-radius: 50px;
 }

@@ -1,3 +1,9 @@
+const sair = document.querySelector('#sair');
+sair.addEventListener('click', () => {
+    window.localStorage.removeItem('token');
+    window.location.href = '../../../index.html';
+})
+
 window.onload = () => {
     injectFontLink();
     setFavicon();
