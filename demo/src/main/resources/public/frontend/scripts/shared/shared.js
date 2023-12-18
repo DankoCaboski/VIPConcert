@@ -35,15 +35,9 @@ function setFavicon() {
     } else {
         shortcutIcon = document.createElement("link");
         shortcutIcon.setAttribute("rel", "shortcut icon");
-        
-        var path = window.location.pathname;
-        var page = path.split("/").pop();
 
-        if(page == "index.html"){
-            shortcutIcon.setAttribute("href", "assets/favicon.ico");
-        }else if(page == "login.html"){
-            shortcutIcon.setAttribute("href", "../assets/favicon.ico");
-        }
+        shortcutIcon.setAttribute("href", "/favicon.ico");
+
         document.head.appendChild(shortcutIcon);
         
     }
