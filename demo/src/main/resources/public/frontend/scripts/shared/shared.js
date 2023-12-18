@@ -27,14 +27,14 @@ function setFavicon() {
     } else {
         shortcutIcon = document.createElement("link");
         shortcutIcon.setAttribute("rel", "shortcut icon");
-        shortcutIcon.setAttribute("href", "/demo/src/main/frontend/assets/favicon.ico");
+        shortcutIcon.setAttribute("href", "../../assets/favicon.ico");
         document.head.appendChild(shortcutIcon);
         
     }
     
     var icon = document.querySelector("link[rel*='icon']");
     if (icon) {
-        icon.href =  "/demo/src/main/frontend/assets/favicon.ico";
+        icon.href =  "../../assets/favicon.ico";
     }
 }
 

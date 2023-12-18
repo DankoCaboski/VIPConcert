@@ -7,7 +7,7 @@ export const eventBanner = (eventId) => {
     let statusFetch = true;
 
     // Fazer a chamada HTTP para obter o título do evento
-    fetch(`http://localhost:8080/event/${eventId}`)
+    fetch(`http://localhost:3000/event/${eventId}`)
     .then(response => response.json())
     .then(data => {
         // Criar o elemento de título e adicionar ao componente
@@ -26,14 +26,14 @@ export const eventBanner = (eventId) => {
         
         if(data.imgId == null){
             if(data.genero == "FESTA" || data.genero == "SHOW"){
-                imageElement.src = "http://localhost:8080/images/defaultShowImg.jpg";
+                imageElement.src = "http://localhost:3000/images/defaultShowImg.jpg";
                 component.appendChild(imageElement);
             }else{
                 if(data.genero == "CONGRESSO"){
-                    imageElement.src = "http://localhost:8080/images/defaultCongressImg.jpg";
+                    imageElement.src = "http://localhost:3000/images/defaultCongressImg.jpg";
                     component.appendChild(imageElement);
                 }else{
-                    imageElement.src = "http://localhost:8080/images/defaultTheatreImg.jpg";
+                    imageElement.src = "http://localhost:3000/images/defaultTheatreImg.jpg";
                 }
                 
             }

@@ -12,17 +12,25 @@ submit.addEventListener('click', function(event) {
             password: password.value,
         });
         console.log("body", body);
-        fazPost('http://localhost:8080/auth/login', body)
+        fazPost('http://localhost:3000/auth/login', body)
         .then((response) => {
             console.log("response", response);
             localStorage.setItem("token", response);
-            window.location.href = "http://127.0.0.1:5500/demo/src/main/frontend/pages/user/USER.home.html";
+            window.location.href = "./user/USER.home.html";
         })
         .catch((error) => {
             console.log("error", error);
         });
     }
 });
+
+const register = document.getElementById("register");
+register.addEventListener('click', function(event) {
+    console.log("register");
+    window.location.href = "./user/USER.cadastro.html";
+    }
+);
+
 
 function fazPost(url, body) {
 
@@ -52,12 +60,5 @@ function fazPost(url, body) {
         request.send(body);
     });
 }
-
-const register = document.getElementById("register");
-register.addEventListener('click', function(event) {
-    console.log("register");
-    window.location.href = "http://127.0.0.1:5500/demo/src/main/frontend/pages/user/USER.cadastro.html";
-    }
-);
 
 console.log( "token: ", localStorage.getItem("token"));
