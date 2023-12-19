@@ -26,6 +26,14 @@ if(home){
     }
 }
 
+const aboutUs = document.querySelector('#about-us');
+if(aboutUs){
+    aboutUs.addEventListener('click', () => {
+        window.localStorage.removeItem('token');
+        window.location.href = 'https://github.com/DankoCaboski/VIPConcert#readme';
+    })
+}
+
 window.onload = () => {
     injectFontLink();
     setFavicon();
