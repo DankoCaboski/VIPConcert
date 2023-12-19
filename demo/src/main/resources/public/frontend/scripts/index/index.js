@@ -21,3 +21,13 @@ function seedBanners() {
 }
 
 seedBanners()
+
+const entrar = document.querySelector('#entrar');
+if(entrar){
+    entrar.addEventListener('click', () => {
+        window.localStorage.removeItem('token');
+        window.location.href = './frontend/pages/login.html';
+    })
+}
+
+
