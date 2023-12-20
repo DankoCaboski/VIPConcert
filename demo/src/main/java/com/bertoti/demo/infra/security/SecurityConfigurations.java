@@ -24,10 +24,9 @@ public class SecurityConfigurations {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                //.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                //.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                //.requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
-                //.requestMatchers(HttpMethod.POST, "/event").hasRole("ADMIN")
+
+                .requestMatchers("/frontend/pages/login.html").permitAll()
+                .requestMatchers("/frontend/pages/**").denyAll()
                 .anyRequest().permitAll()
             )
             .build();
