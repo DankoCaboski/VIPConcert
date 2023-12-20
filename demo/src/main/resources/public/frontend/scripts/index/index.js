@@ -1,24 +1,32 @@
 import { eventBanner } from './COMPONENT.event.js'
 
-const eventos = [];
+let listEventos = null;
 
-fetch(`http://localhost:8080/event`)
-.then(response => response.json())
-.then(data => {
-    eventos.push(data);
-})
+async function seedBanners() {
+    fetch(`http://localhost:8080/event`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        listEventos = data;
+        console.log(listEventos.eventos);
 
-function seedBanners() {
+        listEventos.eventos.forEach(evento => {
 
-    eventos.forEach(evento => {
-        console.log("eventos: ", evento.id);
-
-        const mainElements = document.getElementsByTagName('container');
-        const container = mainElements[0];
-        const myDiv = eventBanner(evento.id);
-        container.appendChild(myDiv);
+            const events = document.getElementById('events')
+            const myDiv = eventBanner(evento.id);
+            events.appendChild(myDiv);
+        });
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
     });
+
 }
+
 
 seedBanners()
 

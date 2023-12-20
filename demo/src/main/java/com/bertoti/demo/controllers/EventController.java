@@ -1,6 +1,7 @@
 package com.bertoti.demo.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bertoti.demo.dto.EventArrayDTO;
 import com.bertoti.demo.dto.EventDTO;
 import com.bertoti.demo.dto.generoDTO;
 import com.bertoti.demo.enums.Categorias;
@@ -42,7 +44,15 @@ public class EventController{
     @GetMapping
     public ResponseEntity<?> getAllEvents() {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(eventRepository.getAllEvents());
+            ArrayList<EventDTO> eventos = eventRepository.getAllEvents();
+
+            if(eventos.size() == 0) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            }
+
+            EventArrayDTO eventoss = new EventArrayDTO(eventos);
+            return ResponseEntity.status(HttpStatus.OK).body(eventoss);
+
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
