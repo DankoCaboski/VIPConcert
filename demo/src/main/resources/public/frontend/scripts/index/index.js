@@ -3,7 +3,7 @@ import { eventBanner } from './COMPONENT.event.js'
 let listEventos = null;
 
 async function seedBanners() {
-    fetch(`http://localhost:8080/event`)
+    fetch(`http://localhost:3000/event`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');

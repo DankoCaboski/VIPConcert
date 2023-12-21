@@ -26,6 +26,7 @@ public class SecurityConfigurations {
             .authorizeHttpRequests(authorize -> authorize
 
                 .requestMatchers("/frontend/pages/login.html").permitAll()
+                .requestMatchers("/frontend/pages/user/USER.home.html").permitAll()
                 .requestMatchers("/frontend/pages/**").denyAll()
                 .anyRequest().permitAll()
             )
