@@ -38,11 +38,11 @@ public class Event {
         genreValidation(eventDTO.genero());
 
         dateValidation(eventDTO);
-        
+
         this.promoters = new ArrayList<User>();
     }
 
-    private void genreValidation(String genreFromDTO) {
+    public void genreValidation(String genreFromDTO) {
         Categorias genre = null;
         try {
             genre = Categorias.valueOf(genreFromDTO);
@@ -53,7 +53,7 @@ public class Event {
         this.genero = genre;
     }
 
-    private void dateValidation (EventDTO eventDTO) {
+    public void dateValidation (EventDTO eventDTO) {
         if(eventDTO.dateInicio() == "" || eventDTO.dateInicio() == null) {
             this.dateInicio = null;
             this.dateFim = null;
