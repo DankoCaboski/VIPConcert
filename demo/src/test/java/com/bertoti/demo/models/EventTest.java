@@ -9,8 +9,12 @@ import java.util.Random;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.InstanceOf;
 
 import com.bertoti.demo.enums.Categorias;
+import static org.hamcrest.CoreMatchers.isA;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.isA;
 
 public class EventTest {
 
@@ -56,9 +60,10 @@ public class EventTest {
     }
 
     @Test
-    @Disabled
     void testGenreValidation() {
-
+        for (Event event : eventos) {
+            assertThat(event.getGenero(), isA(Categorias.class));
+        }
     }
 
     @Test

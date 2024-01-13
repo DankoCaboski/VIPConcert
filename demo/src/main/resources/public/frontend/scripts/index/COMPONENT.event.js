@@ -18,7 +18,9 @@ export const eventBanner = (eventId) => {
         
         const dateElement = document.createElement('p');
         if(data.dateInicio != null){
-            dateElement.innerHTML = data.dateInicio;
+            let dateParts = data.dateInicio.split("-");
+            let jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+            dateElement.innerHTML = `${jsDate.getDate()}/${jsDate.getMonth()+1}/${jsDate.getFullYear()}`;
         } else {
             dateElement.innerHTML = "Em breve";
         }
