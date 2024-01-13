@@ -4,7 +4,7 @@
 
 .events{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -20,12 +20,14 @@
     border-radius: 15px;
     align-items: flex-start;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    margin: 4%;
+    margin: 5%;
+    width: 90%;
+    height: 90%;
 }
 
 .bannerImg{
     width: 100%;
-    height: 200px;
+    height: 100%;
     border-radius: 0px 0px 13px 13px;
 }
 
@@ -41,5 +43,15 @@
 
         height: calc(var(--mobileBannerWidth) - 10px) ;
         border-radius: 0px 0px 13px 13px;
+    }
+
+    .stdBanner{
+        width: 90%;
+        margin: 4%;
+
+    }
+
+    .events{
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
