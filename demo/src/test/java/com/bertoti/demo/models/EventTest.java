@@ -9,12 +9,10 @@ import java.util.Random;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.InstanceOf;
 
 import com.bertoti.demo.enums.Categorias;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.isA;
 
 public class EventTest {
 
@@ -43,7 +41,6 @@ public class EventTest {
     void setUp() {
         seedEventos();
         assertEquals(eventos.size(), nEvents);
-
     }
 
     @Test
@@ -56,7 +53,6 @@ public class EventTest {
                 assertNotEquals(null, event.getDateFim());
             }
         }
-
     }
 
     @Test
@@ -64,120 +60,6 @@ public class EventTest {
         for (Event event : eventos) {
             assertThat(event.getGenero(), isA(Categorias.class));
         }
-    }
-
-    @Test
-    @Disabled
-    void testGetDateFim() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetDateFimAsString() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetDateInicio() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetDateInicioAsString() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetDescription() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetGenero() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetId() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetImgId() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetName() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetPromoters() {
-
-    }
-
-    @Test
-    @Disabled
-    void testGetPromotersAsString() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetDateFim() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetDateInicio() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetDescription() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetGenero() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetId() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetImgId() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetName() {
-
-    }
-
-    @Test
-    @Disabled
-    void testSetPromoters() {
-
     }
 
 }
