@@ -9,9 +9,11 @@
 header {
     background-color: var(--header-footer-color);
     font-family: Arial, Helvetica, sans-serif;
+
     position: fixed;
-    top:0;
-    left: 0;
+
+    margin-top: 0;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,30 +23,34 @@ header {
 
 main {
     font-family: Arial, Helvetica, sans-serif;
-    position: fixed;
-    top:var(--highHeaderFooter);
-    right: 0;
-    left: 0;
+    margin-top: 0;
+    height: 100%;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
 main #container{
-    margin-top: 1vh;
+    margin-top: var(--highHeaderFooter);
+    margin-bottom: var(--highHeaderFooter);
+
+    padding: 1%;
+    padding-bottom: 2%;
+
     display: flex;
+    width: 100%;
+
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: auto;
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
+
     background-color: var(--header-footer-color);
     color: white;
     padding: 10px;
@@ -95,7 +101,9 @@ body {
     background-color: var(--bodyBackground-color);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }
 
 body .user-home-nav{

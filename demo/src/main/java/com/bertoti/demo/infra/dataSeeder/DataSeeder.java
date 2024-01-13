@@ -43,7 +43,7 @@ public class DataSeeder {
 
     private static void seedEvents() {
         Random random = new Random();
-        int nEvents = random.nextInt(10)+5;
+        int nEvents = random.nextInt(10)+50;
         for (int i = 0; i < nEvents; i++) {
 
             Event event = new Event();
