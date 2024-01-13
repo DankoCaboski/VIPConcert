@@ -51,12 +51,13 @@ public class DataSeeder {
             event.setName("Evento " + i);
             Categorias[] categories = Categorias.values();
             event.setGenero(categories[random.nextInt(categories.length)]);
-            event.setDateInicio(null);
-            event.setDateFim(null);
+            if(i%2 == 0){
+                event.setDateInicio(LocalDate.now());
+                event.setDateFim(event.getDateInicio().plusDays(random.nextInt(10)));
+            }
 
             event.setPromoters(null);
-            EventDTO eventDTO = new EventDTO(event);
-            eventRepository.save(eventDTO);
+            eventRepository.save(event);
         }
     }
 }

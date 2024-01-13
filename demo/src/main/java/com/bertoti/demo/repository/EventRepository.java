@@ -20,13 +20,28 @@ public class EventRepository {
         public EventDTO save(EventDTO eventDTO) {
                 try {
                         Event event = new Event(eventDTO);
-                        eventos.add(event);
-                        eventDTO = new EventDTO(eventDTO, event.getId());
-                        log.info("Event created: " + eventDTO.id());
+                        saveToRepo(event);
+                        eventDTO = new EventDTO(event);
                         return eventDTO;
                 } catch (Exception e) {
                         throw e;
                 }
+        }
+
+        public EventDTO save(Event event) {
+                try {
+                        saveToRepo(event);
+                        EventDTO eventDTO = new EventDTO(event);
+                        return eventDTO;
+                } catch (Exception e) {
+                        throw e;
+                }
+        }
+
+        private void saveToRepo (Event event){
+                event.setId(getNEvents()+1);
+                eventos.add(event);
+                log.info("Event created: " + event.getId());
         }
 
         public static int getNEvents() {
