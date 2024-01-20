@@ -12,8 +12,8 @@ submit.addEventListener('click', function(event) {
             password: password.value,
         });
         console.log("body", body);
-        fazPost('http://localhost:3000/auth/login', body)
-        .then((response) => {
+        fazPost('/auth/login', body)
+        .then((response) => { 
             console.log("response", response);
             localStorage.setItem("token", response);
             window.location.href = "./user/USER.home.html";
