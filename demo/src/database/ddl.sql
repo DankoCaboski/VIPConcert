@@ -10,7 +10,6 @@ CREATE table events (
 );
 
 CREATE table users(
-	pid serial NOT NULL,
 	password VARCHAR(30),
 	email VARCHAR(40),
 	name VARCHAR(40),
