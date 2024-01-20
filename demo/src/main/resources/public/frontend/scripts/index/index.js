@@ -34,7 +34,7 @@ const entrar = document.querySelector('#entrar');
 if(entrar){
     entrar.addEventListener('click', () => {
         window.localStorage.removeItem('token');
-        window.location.href = 'http://localhost:3000/frontend/pages/login.html';
+        window.location.href = '/frontend/pages/login.html';
     })
 }
 
