@@ -15,7 +15,7 @@ public record UserDTO(
     ){
 
     public UserDTO(User user){
-        this(user.getId(), user.getPassword(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()), user.getStatus().name());
+        this(user.getPid(), user.getPassword(), user.getEmail(), user.getName(), user.getCpf(), validateRole(user.getRole().name()), user.getStatus().name());
     }
 
     public RolesEnum getRole(){

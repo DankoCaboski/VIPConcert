@@ -20,13 +20,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User  implements UserDetails{
-    private Integer id;
+    private Integer pid;
     private String password;
     private String email;
     private String name;
     private String cpf;
     private RolesEnum role;
     private StatusEnum status;
+    //TODO: rever status
+    //TODO: tornar cpf pk e remover pid
+
 
     public RolesEnum getRole() {
         return role;

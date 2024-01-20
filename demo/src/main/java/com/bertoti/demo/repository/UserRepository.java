@@ -19,7 +19,7 @@ public class UserRepository {
     
     public User save(UserDTO userDTO) {
         User user = userDTO.toUser();
-        user.setId(users.size()+1);
+        user.setPid(users.size()+1);
         users.add(user);
         return user;
     }
@@ -33,7 +33,7 @@ public class UserRepository {
 
     public User findById(int id) {
         for (User user : users) {
-            if (user.getId() == id) {
+            if (user.getPid() == id) {
                 return user;
             }
         }
@@ -57,7 +57,7 @@ public class UserRepository {
     }
 
     public boolean existById(Integer id) {
-        return users.stream().anyMatch(user -> user.getId() == id);
+        return users.stream().anyMatch(user -> user.getPid() == id);
     }
 
     public boolean existByCpf(String cpf) {
